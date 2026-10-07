@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edison Chen · 全栈 / AI Agent 工程</title>
+  <meta name="description" content="Edison Chen 的个人作品集：AI 导购电商 Smartlect、校园互助平台 PeerGrab、多 Agent 早报流水线 NewsClaw、会议纪要 Agent MeetingBot。" />
+  <meta property="og:title" content="Edison Chen · 全栈 / AI Agent 工程" />
+  <meta property="og:description" content="把 LLM 做成守规矩、可运维的真实系统。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://littlesongxx.github.io/assets/smartlect.jpg" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Ctext x='32' y='43' font-family='monospace' font-size='32' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- 侧边导航（桌面端固定左侧，移动端变为顶栏） -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__inner">
+      <a class="logo" href="#home" aria-label="回到顶部">Edison<span class="logo__accent">Chen</span><span class="logo__dot">.</span></a>
+      <nav class="nav" aria-label="页面导航">
+        <ul>
+          <li><a class="nav__link" href="#home"><span class="nav__num">01.</span>首页</a></li>
+          <li><a class="nav__link" href="#about"><span class="nav__num">02.</span>关于</a></li>
+          <li><a class="nav__link" href="#projects"><span class="nav__num">03.</span>项目</a></li>
+          <li><a class="nav__link" href="#contact"><span class="nav__num">04.</span>联系</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a href="https://github.com/LittleSongxx" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        </a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- 移动端顶栏按钮 -->
+  <button class="menu-btn" id="menuBtn" aria-label="打开菜单" aria-expanded="false" aria-controls="sidebar">
+    <span></span><span></span><span></span>
+  </button>
+
+  <main class="main">
+    <!-- Hero -->
+    <section class="hero section" id="home">
+      <p class="hero__hi mono reveal">你好，我是</p>
+      <h1 class="hero__name reveal">Edison Chen<span class="hero__dot">.</span></h1>
+      <h2 class="hero__title reveal">把 LLM 做成守规矩、可运维的真实系统。</h2>
+      <p class="hero__desc reveal">
+        哈尔滨工业大学在读。后端写 Java 与 Python，前端 React / Vue 都上手；
+        关注 AI Agent 的工程化——边界用架构钉住，而不是靠提示词祈祷。
+      </p>
+      <div class="hero__cta reveal">
+        <a class="btn btn--solid" href="#projects">看看我的项目 ↓</a>
+        <a class="btn btn--ghost" href="https://github.com/LittleSongxx" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <dl class="stats reveal">
+        <div class="stats__item"><dt>代表作</dt><dd><span class="mono">04</span></dd></div>
+        <div class="stats__item"><dt>微服务容器</dt><dd><span class="mono">09</span></dd></div>
+        <div class="stats__item"><dt>测试用例</dt><dd><span class="mono">5900+</span></dd></div>
+        <div class="stats__item"><dt>在线演示</dt><dd><span class="mono">02</span></dd></div>
+      </dl>
+    </section>
+
+    <!-- 关于 -->
+    <section class="section" id="about">
+      <h2 class="section__title reveal"><span class="mono section__num">02.</span>关于我</h2>
+      <div class="about__grid">
+        <div class="about__text reveal">
+          <p>
+            我喜欢把一个想法做成<strong>完整能跑的东西</strong>：从领域建模、并发与资金链路，
+            到 Agent 的检索、引用与人工确认，再到容器编排、CI 和可观测。
+          </p>
+          <p>
+            做 AI 应用时我反复回答同一个问题：<em>模型出错了怎么办？</em>
+            我的答案写在代码里——导购 Agent 的范围钉在当前商品、纪要的每个字段带证据来源、
+            下单必须人点确认。模型可以建议，不能拍板。
+          </p>
+          <p>
+            平时维护着 17 个公开仓库，关键链路坚持补测试（NewsClaw 一个项目 5900+ 用例），
+            相信<strong>能被验证的系统才敢交给别人用</strong>。
+          </p>
+        </div>
+        <div class="about__skills reveal">
+          <div class="skill-group">
+            <h3 class="mono">// 后端</h3>
+            <ul class="tags">
+              <li>Java 21</li><li>Spring Boot</li><li>Spring Cloud</li><li>Python</li><li>FastAPI</li>
+              <li>MySQL</li><li>Redis</li><li>RocketMQ</li><li>RabbitMQ</li><li>Elasticsearch</li><li>Temporal</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3 class="mono">// 前端</h3>
+            <ul class="tags">
+              <li>React 18</li><li>TypeScript</li><li>Vue 3</li><li>Tauri 2</li><li>Element Plus</li><li>WebSocket / SSE</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3 class="mono">// AI 工程</h3>
+            <ul class="tags">
+              <li>LangGraph</li><li>有界 ReAct</li><li>RAG 混检（ES + Qdrant）</li><li>ASR 说话人分离</li><li>证据门控</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3 class="mono">// 工程实践</h3>
+            <ul class="tags">
+              <li>Docker Compose</li><li>GitHub Actions CI</li><li>DDD</li><li>ArchUnit</li><li>可观测性</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 项目 -->
+    <section class="section" id="projects">
+      <h2 class="section__title reveal"><span class="mono section__num">03.</span>我做的项目</h2>
+      <p class="section__lead reveal">四个都在线上或仓库里活着：两个有在线演示，两个开源可复现。</p>
+
+      <div class="projects">
+        <!-- Smartlect -->
+        <article class="card reveal">
+          <a class="shot" href="https://smartlect.cn/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <span class="shot__bar"><i></i><i></i><i></i><span class="shot__url mono">smartlect.cn</span></span>
+            <img src="assets/smartlect.jpg" alt="Smartlect 智选商城首页" loading="lazy" />
+          </a>
+          <div class="card__body">
+            <div class="card__titlerow">
+              <h3 class="card__title">Smartlect</h3>
+              <span class="card__cat">AI 导购电商</span>
+            </div>
+            <p class="card__tagline">
+              一家「会按商品回答」的店：Vue 3 双端商城 + 九个 Spring Cloud 微服务，
+              店里的导购是 LangGraph 有界 ReAct Agent。
+            </p>
+            <ul class="card__points">
+              <li>导购范围钉在当前商品、回答带引用；价格库存每次重问交易服务——模型可以建议，不能成交。</li>
+              <li>Elasticsearch + Qdrant 混检、Canal 同步商品索引、Outbox 最终一致，九容器 Compose 一键起。</li>
+              <li>用户端 / 管理端在线可玩，服务端按身份鉴权，配套 GitHub Actions CI。</li>
+            </ul>
+            <ul class="tags">
+              <li>Vue 3</li><li>Spring Cloud</li><li>Java 17</li><li>LangGraph</li><li>Elasticsearch</li><li>Qdrant</li><li>Docker Compose</li>
+            </ul>
+            <div class="card__links">
+              <a class="btn btn--solid btn--sm" href="https://smartlect.cn/" target="_blank" rel="noopener">在线演示 ↗</a>
+              <a class="btn btn--ghost btn--sm" href="https://github.com/LittleSongxx/Smartlect" target="_blank" rel="noopener">源码</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PeerGrab -->
+        <article class="card reveal">
+          <a class="shot" href="https://www.peergrab.cn" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <span class="shot__bar"><i></i><i></i><i></i><span class="shot__url mono">www.peergrab.cn</span></span>
+            <img src="assets/peergrab.jpg" alt="PeerGrab 任务广场" loading="lazy" />
+          </a>
+          <div class="card__body">
+            <div class="card__titlerow">
+              <h3 class="card__title">PeerGrab</h3>
+              <span class="card__cat">校园互助平台</span>
+            </div>
+            <p class="card__tagline">
+              把一笔校园跑腿交易的完整生命周期做扎实：悬赏发布与资金托管、并发抢单、
+              履约结算、退款仲裁、信用分与实时通知。
+            </p>
+            <ul class="card__points">
+              <li>Java 21 / Spring Boot + React / TypeScript，MySQL · Redis · RocketMQ，独立 Worker 消费队列。</li>
+              <li>DDD 分层：领域层定义状态规则与端口，ArchUnit 在测试里守住依赖边界。</li>
+              <li>已上线运行，任务广场、钱包流水、争议仲裁全流程可体验。</li>
+            </ul>
+            <ul class="tags">
+              <li>Java 21</li><li>Spring Boot</li><li>React</li><li>TypeScript</li><li>RocketMQ</li><li>DDD</li><li>WebSocket</li>
+            </ul>
+            <div class="card__links">
+              <a class="btn btn--solid btn--sm" href="https://www.peergrab.cn" target="_blank" rel="noopener">在线体验 ↗</a>
+              <a class="btn btn--ghost btn--sm" href="https://github.com/LittleSongxx/PeerGrab" target="_blank" rel="noopener">源码</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- NewsClaw -->
+        <article class="card reveal">
+          <a class="shot" href="https://github.com/LittleSongxx/NewsClaw" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <span class="shot__bar"><i></i><i></i><i></i><span class="shot__url mono">github.com/LittleSongxx/NewsClaw</span></span>
+            <img src="assets/newsclaw.jpg" alt="NewsClaw 早报工作台" loading="lazy" />
+          </a>
+          <div class="card__body">
+            <div class="card__titlerow">
+              <h3 class="card__title">NewsClaw</h3>
+              <span class="card__cat">多 Agent 早报流水线</span>
+            </div>
+            <p class="card__tagline">
+              一条会自己进化的 AI 早报流水线：四路信源日更采集、三产物成稿、
+              本地 Markdown Wiki 沉淀、飞书归档、每周复盘自进化。数据全在本地。
+            </p>
+            <ul class="card__points">
+              <li>Python / FastAPI 运行时 + React / Tauri 2 桌面端，桌面、Web、移动共用一个后端。</li>
+              <li>134 个工具、88 个技能；定时任务到点自己采集、自己写、自己归档、自己打分。</li>
+              <li>5900+ 测试全部通过，AGPL-3.0 开源。</li>
+            </ul>
+            <ul class="tags">
+              <li>Python</li><li>FastAPI</li><li>React 18</li><li>Tauri 2</li><li>Multi-Agent</li><li>asyncio</li>
+            </ul>
+            <div class="card__links">
+              <a class="btn btn--ghost btn--sm" href="https://github.com/LittleSongxx/NewsClaw" target="_blank" rel="noopener">源码</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- MeetingBot -->
+        <article class="card reveal">
+          <a class="shot" href="https://github.com/LittleSongxx/MeetingBot" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <span class="shot__bar"><i></i><i></i><i></i><span class="shot__url mono">github.com/LittleSongxx/MeetingBot</span></span>
+            <img src="assets/meetingbot.jpg" alt="MeetingBot 会议纪要界面" loading="lazy" />
+          </a>
+          <div class="card__body">
+            <div class="card__titlerow">
+              <h3 class="card__title">MeetingBot</h3>
+              <span class="card__cat">会议纪要 Agent</span>
+            </div>
+            <p class="card__tagline">
+              一场会开完，纪要已经能用了：录音上传 → 转写（说话人分离）→
+              六字段结构化纪要 → 证据门控自检 → 人工确认归档。
+            </p>
+            <ul class="card__points">
+              <li>概要、议题、观点、决策、待办、风险六字段带类型化槽位与证据来源，「不许凭空断言」做成数据结构不变量。</li>
+              <li>LangGraph 状态机跑「审查 → 重写 → 复审」反思环，全程 SSE 流式推送，Temporal 负责持久化执行。</li>
+              <li>五服务 Docker Compose 一条命令起，确认后一键导出 Word / PDF。</li>
+            </ul>
+            <ul class="tags">
+              <li>FastAPI</li><li>Vue 3</li><li>LangGraph</li><li>Temporal</li><li>MySQL</li><li>SSE</li>
+            </ul>
+            <div class="card__links">
+              <a class="btn btn--ghost btn--sm" href="https://github.com/LittleSongxx/MeetingBot" target="_blank" rel="noopener">源码</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <p class="more reveal">
+        还有 13 个公开仓库在
+        <a href="https://github.com/LittleSongxx?tab=repositories" target="_blank" rel="noopener">GitHub <span class="mono">↗</span></a> 上，欢迎逛逛。
+      </p>
+    </section>
+
+    <!-- 联系 -->
+    <section class="section section--contact" id="contact">
+      <h2 class="section__title reveal"><span class="mono section__num">04.</span>联系我</h2>
+      <p class="contact__lead reveal">
+        想聊聊上面任何一个项目、一起做点新的，或者只是打个招呼——我的收件箱总是开着的。
+      </p>
+      <div class="contact__cta reveal">
+        <a class="btn btn--solid" href="https://github.com/LittleSongxx" target="_blank" rel="noopener">来 GitHub 找我 ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="mono">Designed &amp; built with plain HTML / CSS / JS</p>
+    <p class="mono">© <span id="year">2026</span> Edison Chen</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
