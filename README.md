@@ -1,72 +1,66 @@
-# Littlesongxx · 个人作品集网站
+# Littlesongxx · 个人作品集
 
 **线上地址：<https://littlesongxx.github.io>**
 
-纯 HTML / CSS / JS 单页作品集，无框架、无构建步骤，围绕 GitHub 置顶的四个项目（Smartlect、PeerGrab、NewsClaw、MeetingBot）组织内容。
+一个只用 HTML / CSS / JS 的单页作品集，聚焦 **AI 应用开发** 与 **后端开发**。
+页面收录 6 个代表项目 + 6 个更多项目，支持浅色 / 深色主题、项目分类筛选和响应式布局。
 
-## 目录结构
+## 内容结构
 
-```
-portfolio/
-├── index.html      # 全部文案与项目内容
-├── css/style.css   # 样式（明亮浅色主题、响应式）
-├── js/main.js      # 入场动画 / 移动端菜单 / 导航高亮
-└── assets/         # 四个项目的产品截图
+- **代表项目**：GrowthPilot、Smartlect、NewsClaw、MeetingBot、ParingBot、PeerGrab
+- **更多项目**：Smartledge、SoulSearcher、PlanGo、Agent_Eval、AI-Medicine-Mall、MindCart
+- 只保留 AI 应用、AI + 后端、后端 / 全栈相关项目，不放刷题笔记、机器人或其他方向仓库
+- 项目文案以“这个产品能做什么”为主，技术细节放在标签里，方便非技术读者理解
+
+## 页面特性
+
+- 浅色 / 深色主题（跟随系统，支持手动切换并记住选择）
+- 项目分类筛选：全部 / AI 应用 / 后端与全栈
+- 首屏数字滚动、滚动进度条、卡片入场和轻量悬浮动效
+- 纯静态页面，无框架、无构建步骤、无外部字体或脚本依赖
+- `prefers-reduced-motion` 下自动关闭动画
+
+## 目录
+
+```text
+.
+├── index.html          # 页面结构与全部文案
+├── css/style.css       # 主题变量、布局、响应式和动效
+├── js/main.js          # 主题切换、筛选、入场动画、数字滚动
+├── assets/             # 项目截图（JPG，约 700KB）
+├── .nojekyll           # GitHub Pages 不做 Jekyll 处理
+└── README.md
 ```
 
 ## 本地预览
 
 ```bash
-cd portfolio
-python -m http.server 8471
+python3 -m http.server 8471
 # 打开 http://localhost:8471
 ```
 
-直接双击 index.html 也可以打开（JS 无跨域依赖）。
+也可以直接打开 `index.html`，页面没有跨域依赖。
 
-## 改内容
+## 修改内容
 
-所有文案都在 `index.html` 里，搜索以下关键词定位：
-
-| 想改什么 | 搜索 |
+| 想改什么 | 去哪里 |
 | --- | --- |
-| 名字 / 标题 / 一句话定位 | `hero__name`、`hero__title`、`<title>` |
-| 自我介绍三段话 | `about__text` |
-| 首页四个统计数字 | `stats` |
-| 技能标签分组 | `skill-group` |
-| 项目卡片（标题、要点、标签、链接） | `card__body` |
-| 换截图 | 替换 `assets/*.jpg`（建议 16:10 横图、宽 1600px 左右） |
+| 页面标题 / 描述 / OG 信息 | `index.html` 的 `<head>` |
+| 首屏文案、统计数字、按钮 | `index.html` 的 `.hero` 区块 |
+| 关于我、三条原则、技能标签 | `index.html` 的 `#about` 区块 |
+| 代表项目卡片 | `index.html` 的 `#projectGrid` |
+| 更多项目卡片 | `index.html` 的 `.more-grid` |
+| 主题色、字号、间距 | `css/style.css` 顶部的 `:root` 变量 |
+| 主题切换 / 筛选 / 动效 | `js/main.js` |
 
-**建议尽快补上的**：`contact` 区目前只有 GitHub 入口，把「来 GitHub 找我」按钮换成你的邮箱 `mailto:` 链接，或两个都放。
+换项目截图时，建议 16:10 横图、宽 1600px、JPEG 质量 84 左右，并同步修改卡片的 `width` / `height`。
 
-## 部署到 GitHub Pages（免费）
+## 部署
 
-**方式一：独立站点（推荐）**
+仓库 `main` 分支直接作为 GitHub Pages 源站，推送到 `main` 后自动发布：
 
-1. 新建仓库，名字必须是 `LittleSongxx.github.io`（你的用户名 + .github.io）。
-2. 把 `portfolio/` 下的所有文件推到 main 分支（注意：是文件夹内容，不是文件夹本身）：
-   ```bash
-   cd portfolio
-   git init && git add -A && git commit -m "init portfolio"
-   git remote add origin https://github.com/LittleSongxx/LittleSongxx.github.io.git
-   git push -u origin main
-   ```
-3. 等一分钟，访问 `https://littlesongxx.github.io`。
-
-**方式二：挂在任意仓库下**
-
-推到任意仓库后：Settings → Pages → Source 选 `main` 分支 `/root`，站点地址为 `https://littlesongxx.github.io/<仓库名>/`。
-
-**自定义域名**（可选）：仓库根目录加 `CNAME` 文件写上域名，DNS 加一条 CNAME 指向 `littlesongxx.github.io`。你有 `peergrab.cn` / `smartlect.cn`，可以考虑买个短域名（如 `edison.cn` 风格）专门做主页。
-
-## 部署后的小优化
-
-- `index.html` 里 `og:image` 目前是相对路径，部署后改成绝对地址（`https://littlesongxx.github.io/assets/smartlect.jpg`），分享到社交平台才有预览图。
-- 项目有更新（比如 star 涨了、新功能上线）记得回来同步卡片要点——内容新鲜比样式华丽重要。
-- 想加新项目：复制一段 `<article class="card">` 改内容即可，布局会自动排。
-
-## 技术说明
-
-- 浅色主题来自 CSS 变量（`css/style.css` 顶部 `:root`），想换主色调改 `--accent` 一处即可。
-- 入场动画用 IntersectionObserver，`prefers-reduced-motion` 下自动禁用。
-- 截图已压缩为 1600px JPEG（共约 400KB），首屏无大图阻塞。
+```bash
+git add -A
+git commit -m "feat: update portfolio"
+git push origin main
+```
