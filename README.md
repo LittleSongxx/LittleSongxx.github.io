@@ -10,6 +10,7 @@
 - **代表项目**：GrowthPilot、Smartlect、NewsClaw、MeetingBot、ParingBot、PeerGrab
 - **更多项目**：Smartledge、SoulSearcher、PlanGo、Agent_Eval、AI-Medicine-Mall、MindCart
 - 只保留 AI 应用、AI + 后端、后端 / 全栈相关项目，不放刷题笔记、机器人或其他方向仓库
+- 项目卡片只链接 GitHub 仓库，不依赖已经停机的演示域名
 - 项目文案以“这个产品能做什么”为主，技术细节放在标签里，方便非技术读者理解
 
 ## 页面特性
